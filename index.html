@@ -21,7 +21,6 @@
         }
         .no-scrollbar::-webkit-scrollbar { display: none; }
         .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
-        .menu-item-transition { transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1); }
     </style>
 </head>
 <body class="text-white min-h-screen pb-32">
@@ -30,28 +29,29 @@
         Bem-vindo ao Mesa Bar!
     </div>
 
-    <header class="w-full text-center pt-12 pb-8 px-4 flex flex-col items-center bg-gradient-to-b from-[#1a110a] to-transparent">
+    <header class="w-full max-w-2xl mx-auto text-center pt-12 pb-8 px-4 flex flex-col items-center">
         <div class="relative mb-6">
             <img src="LOGO MESA BAR.jpg" alt="Logótipo Mesa Bar" class="w-44 h-44 rounded-full object-cover border-4 border-[#e5c158] shadow-[0_0_30px_rgba(229,193,88,0.3)] bg-[#1a110a]" onerror="this.src='https://placehold.co/180x180/1a110a/e5c158?text=Mesa+Bar';">
         </div>
-        
         <h1 class="text-4xl font-black tracking-widest uppercase text-white drop-shadow-md">Mesa Bar</h1>
         <div class="text-[#e5c158] text-xs tracking-[0.5em] font-bold mt-2 mb-6">LUANDA</div>
         
-        <!-- Mamboo Link atualizado -->
-        <a href="https://mamb.app/MglAd" target="_blank" class="flex items-center gap-2 bg-[#e5c158] px-6 py-3 rounded-full font-bold text-black hover:bg-[#d4b04a] transition-all shadow-lg hover:scale-105 active:scale-95 mb-4">
-            <i class="fas fa-link"></i> Aceder Mamboo
-        </a>
-
-        <div class="flex items-center gap-2 bg-black/60 px-5 py-2.5 rounded-full border border-[#e5c158]/20 backdrop-blur-md text-xs text-[#d1c7bd]">
-            <i class="fas fa-map-marker-alt text-[#e5c158]"></i> 
-            Rua Cónego Manuel das Neves, Kinaxixi, Luanda
+        <div class="flex flex-col items-center gap-3 w-full">
+            <div class="flex items-center gap-2 bg-black/60 px-5 py-2.5 rounded-full border border-[#e5c158]/20 backdrop-blur-md text-xs text-[#d1c7bd]">
+                <i class="fas fa-map-marker-alt text-[#e5c158]"></i> 
+                Rua Cónego Manuel das Neves, Kinaxixi, Luanda
+            </div>
+            
+            <a href="https://mamb.app/MglAd" target="_blank" class="flex items-center gap-2 bg-[#ff6f00]/10 px-4 py-1.5 rounded-full border border-[#ff6f00]/40 backdrop-blur-md hover:bg-[#ff6f00]/20 transition-all w-fit">
+                <img src="MAMBOO.jpg" alt="Mamboo" class="w-6 h-6 rounded-full object-cover border border-[#ff6f00]" onerror="this.style.display='none'">
+                <span class="text-[10px] text-[#ff6f00] font-extrabold tracking-wider uppercase">Disponível na Mamboo</span>
+            </a>
         </div>
     </header>
 
-    <section class="w-full max-w-2xl mx-auto px-6 mb-8 text-center">
+    <section class="w-full max-w-2xl mx-auto px-4 mb-8 text-center">
         <p class="text-[#d1c7bd] text-xs tracking-[0.2em] uppercase font-bold mb-4">Acompanhe-nos Online</p>
-        <div class="flex justify-center gap-6">
+        <div class="flex justify-center gap-6 mb-10">
             <a href="https://instagram.com/restaurante_mesabar" target="_blank" class="text-[#d1c7bd] text-lg w-12 h-12 rounded-full bg-[#1a110a] border border-white/10 flex items-center justify-center hover:text-[#e5c158] hover:border-[#e5c158] transition-all">
                 <i class="fab fa-instagram"></i>
             </a>
@@ -62,9 +62,7 @@
                 <i class="fab fa-whatsapp"></i>
             </a>
         </div>
-    </section>
 
-    <section class="w-full max-w-2xl mx-auto px-4 mb-8">
         <div class="text-[#e5c158] text-xs uppercase tracking-[0.3em] font-extrabold mb-4 flex items-center justify-center gap-3">
             <span class="w-10 h-[1px] bg-[#e5c158]/50"></span>
             Agenda e Destaques
@@ -72,16 +70,22 @@
         </div>
         
         <div class="flex gap-4 overflow-x-auto pb-4 px-2 no-scrollbar snap-x justify-center">
-            <div class="min-w-[280px] bg-[#1a110a]/95 rounded-2xl border border-[#e5c158]/20 overflow-hidden shadow-lg">
-                <div class="p-4"><h3 class="text-sm font-extrabold text-white">Eventos</h3></div>
+            <div class="min-w-[280px] bg-[#1a110a]/95 rounded-2xl border border-[#e5c158]/20 overflow-hidden snap-center shadow-lg flex-shrink-0">
+                <div class="relative w-full pt-[135%] bg-black/40">
+                    <img src="foto de destaque atividade dia 24 de julho.jpeg" alt="Evento" class="absolute inset-0 w-full h-full object-cover" onerror="this.src='https://placehold.co/340x460/1a110a/e5c158?text=Dia+24+Julho';">
+                </div>
+                <div class="p-4 border-t border-white/5 text-left">
+                    <h3 class="text-sm font-extrabold text-white">Aniceto & Teidy</h3>
+                    <p class="text-xs text-[#e5c158] font-bold mt-1.5">Sexta-feira, 24 de Julho</p>
+                </div>
             </div>
         </div>
     </section>
 
-    <nav class="w-full sticky top-0 z-[1000] bg-[#0f0905]/95 border-b border-[#e5c158]/20 backdrop-blur-md flex gap-3 overflow-x-auto px-4 py-4 no-scrollbar">
+    <nav class="w-full max-w-2xl mx-auto sticky top-0 z-[1000] bg-[#0f0905]/95 border-b border-[#e5c158]/20 backdrop-blur-md flex gap-3 overflow-x-auto px-4 py-4 no-scrollbar justify-center">
         <button class="category-btn active px-6 py-3 rounded-full text-xs font-black uppercase whitespace-nowrap bg-[#e5c158] text-[#150905]" onclick="switchCategory('comidas', this)">Menu de Comidas</button>
-        <button class="category-btn px-6 py-3 rounded-full text-xs font-black uppercase whitespace-nowrap bg-white/5 text-[#d1c7bd]" onclick="switchCategory('bebidas', this)">Bebidas & Cafetaria</button>
-        <button class="category-btn px-6 py-3 rounded-full text-xs font-black uppercase whitespace-nowrap bg-white/5 text-[#d1c7bd]" onclick="switchCategory('bar', this)">Bar & Espirituosas</button>
+        <button class="category-btn px-6 py-3 rounded-full text-xs font-black uppercase whitespace-nowrap bg-white/5 text-[#d1c7bd]" onclick="switchCategory('bebidas', this)">Bebidas</button>
+        <button class="category-btn px-6 py-3 rounded-full text-xs font-black uppercase whitespace-nowrap bg-white/5 text-[#d1c7bd]" onclick="switchCategory('bar', this)">Bar</button>
     </nav>
 
     <main class="w-full max-w-2xl mx-auto px-4 mt-6">
@@ -90,9 +94,168 @@
 
     <script>
         const database = {
-            comidas: { "Entradas": [{ nome: "Couvert", preco: "4.500 Kz", desc: "Pão fresco, manteiga." }] },
-            bebidas: { "Cafetaria": [{ nome: "Café Delta", preco: "1.000 Kz", desc: "Expresso Delta." }] },
-            bar: { "Gin": [{ nome: "Beefeater", preco: "4.500 Kz", desc: "Gin clássico." }] }
+            comidas: { 
+                "Entradas": [{ nome: "Couvert", preco: "4.500 Kz", desc: "Pão, manteiga e azeitonas" }],
+                "Sopas & Caldos": [
+                    { nome: "Caldo Verde", preco: "4.500 Kz", desc: "Couve, chouriço e batatas" },
+                    { nome: "Caldo de Peixe", preco: "8.000 Kz", desc: "" }
+                ],
+                "Salgados Diversos": [
+                    { nome: "Duzia", preco: "8.000 Kz", desc: "" },
+                    { nome: "Meia Duzia", preco: "4.500 Kz", desc: "" }
+                ],
+                "Aperitivos": [
+                    { nome: "Ginguba Torrada", preco: "1.000 Kz", desc: "" },
+                    { nome: "Tremoços", preco: "2.500 Kz", desc: "" },
+                    { nome: "Azeitonas", preco: "2.500 Kz", desc: "" }
+                ],
+                "Snacks": [
+                    { nome: "Prego no Pão", preco: "9.000 Kz", desc: "" },
+                    { nome: "Tosta Mista", preco: "2.000 Kz", desc: "" },
+                    { nome: "Tosta de Atum", preco: "3.000 Kz", desc: "" },
+                    { nome: "Tosta de Frango", preco: "3.000 Kz", desc: "" },
+                    { nome: "Bifana no Pão", preco: "6.000 Kz", desc: "" }
+                ],
+                "Pratos Principais (Terra)": [
+                    { nome: "Picanha na Chapa", preco: "19.000 Kz", desc: "Batata, banana-pão, feijão e arroz" },
+                    { nome: "Bife a Portuguesa", preco: "22.500 Kz", desc: "" },
+                    { nome: "Gelhada Mista 2X PAX | 1X PAX", preco: "30.000 Kz | 16.000 Kz", desc: "Arroz de feijão, batata e salada" },
+                    { nome: "Bitoque", preco: "10.000 Kz", desc: "" },
+                    { nome: "Frango Na Brasa Inteiro | Melo", preco: "21.000 Kz | 11.000 Kz", desc: "Batata, arroz, feijão e salada" }
+                ],
+                "Pratos Principais (Mar)": [
+                    { nome: "Posta De Peixe Grelhada", preco: "22.500 Kz", desc: "Batata cozida e legumes salteados" },
+                    { nome: "Choco Grelhado", preco: "19.000 Kz", desc: "Batata cozida e legumes salteados" }
+                ],
+                "Petiscos": [
+                    { nome: "Choco Panado", preco: "8.000 Kz", desc: "" },
+                    { nome: "Pica-pau", preco: "7.500 Kz", desc: "" },
+                    { nome: "Asinhas Panadas", preco: "6.500 Kz", desc: "" },
+                    { nome: "Moelas", preco: "4.500 Kz", desc: "" },
+                    { nome: "Peixe Frito", preco: "4.500 Kz", desc: "" },
+                    { nome: "Dobradinha", preco: "5.000 Kz", desc: "" },
+                    { nome: "Chouriço Caseiro", preco: "7.500 Kz", desc: "" }
+                ],
+                "Guarnições": [
+                    { nome: "Arroz", preco: "1.500 Kz", desc: "" },
+                    { nome: "Batata Frita", preco: "1.500 Kz", desc: "" },
+                    { nome: "Farofa", preco: "1.000 Kz", desc: "" },
+                    { nome: "Pão ao Alho", preco: "2.500 Kz", desc: "" },
+                    { nome: "Vinagrete", preco: "1.000 Kz", desc: "" },
+                    { nome: "Feijão", preco: "1.500 Kz", desc: "" },
+                    { nome: "Legumes Salteados", preco: "2.500 Kz", desc: "" },
+                    { nome: "Couve Mineira", preco: "1.500 Kz", desc: "" }
+                ],
+                "Sobremesa": [
+                    { nome: "Fruta da Época", preco: "1.500 Kz", desc: "" },
+                    { nome: "Doce da Casa", preco: "3.500 Kz", desc: "" }
+                ]
+            },
+            bebidas: { 
+                "Cafés": [
+                    { nome: "Café Delta", preco: "1.000 Kz", desc: "" },
+                    { nome: "Café Delta c/ Cheirinho", preco: "2.500 Kz", desc: "" }
+                ],
+                "Chás": [
+                    { nome: "Chás Naturais e Saquetas", preco: "1.500 Kz", desc: "" }
+                ],
+                "Águas": [
+                    { nome: "Água 50cl", preco: "500 Kz", desc: "" },
+                    { nome: "Água Gaseificada", preco: "2.000 Kz", desc: "" },
+                    { nome: "Água Tónica", preco: "1.000 Kz", desc: "" }
+                ],
+                "Sumos Naturais": [
+                    { nome: "Sumo Natural (1)", preco: "3.000 Kz", desc: "" },
+                    { nome: "Sumo Natural (2 ou +)", preco: "4.000 Kz", desc: "" }
+                ],
+                "Refrigerantes": [
+                    { nome: "Coca Cola", preco: "1.000 Kz", desc: "" },
+                    { nome: "Pepsi Zero", preco: "1.000 Kz", desc: "" },
+                    { nome: "Sprite | Zero", preco: "1.000 Kz", desc: "" },
+                    { nome: "Fanta de Laranja", preco: "1.000 Kz", desc: "" },
+                    { nome: "Sumol Ananás | Laranja", preco: "1.000 Kz", desc: "" },
+                    { nome: "Ginger Ale", preco: "1.000 Kz", desc: "" },
+                    { nome: "Energético", preco: "3.000 Kz", desc: "" },
+                    { nome: "Sminorff Guaraná", preco: "1.500 Kz", desc: "" },
+                    { nome: "Booster Maçã | Morango", preco: "1.300 Kz", desc: "" }
+                ],
+                "Vinhos": [
+                    { nome: "Copo", preco: "3.000 Kz", desc: "" },
+                    { nome: "Tinto / Branco", preco: "Sob Consulta", desc: "" },
+                    { nome: "Mateus Rosé", preco: "12.000 Kz", desc: "" },
+                    { nome: "Espumante Moscato", preco: "20.000 Kz", desc: "" }
+                ]
+            },
+            bar: { 
+                "Cerveja": [
+                    { nome: "Barrilito", preco: "500 Kz", desc: "Mini 25 cl" },
+                    { nome: "Lambreta", preco: "500 Kz", desc: "Fino Cuca / Eka 25 cl" },
+                    { nome: "Fino", preco: "800 Kz", desc: "33 cl" },
+                    { nome: "Tulipa", preco: "1.000 Kz", desc: "Copo Fino" },
+                    { nome: "Panachê", preco: "2.000 Kz", desc: "Cerveja c/ Limonada" },
+                    { nome: "Tango", preco: "2.000 Kz", desc: "Cerveja c/ Sumo" },
+                    { nome: "Heineken", preco: "3.000 Kz", desc: "Cerveja em Garrafa" }
+                ],
+                "Cocktails": [
+                    { nome: "Caipirinha", preco: "4.000 Kz", desc: "" },
+                    { nome: "Caipirosca", preco: "4.000 Kz", desc: "" },
+                    { nome: "Caipiblack", preco: "4.000 Kz", desc: "" },
+                    { nome: "Mojito | S/Alc", preco: "3.000 Kz | 4.000 Kz", desc: "" },
+                    { nome: "Margarida", preco: "5.000 Kz", desc: "" },
+                    { nome: "Pinã Colada", preco: "6.000 Kz", desc: "" },
+                    { nome: "Whisky Sour", preco: "6.000 Kz", desc: "" },
+                    { nome: "Daiquiri", preco: "4.000 Kz", desc: "" }
+                ],
+                "Licores": [
+                    { nome: "Amarula", preco: "4.000 Kz", desc: "" },
+                    { nome: "Licor Beirão", preco: "4.000 Kz", desc: "" },
+                    { nome: "Blue Coração", preco: "4.000 Kz", desc: "" },
+                    { nome: "Batida de Côco", preco: "4.000 Kz", desc: "" },
+                    { nome: "Triple Seco", preco: "5.000 Kz", desc: "" },
+                    { nome: "Absinto", preco: "4.000 Kz", desc: "" },
+                    { nome: "Xarope de Groselha", preco: "3.000 Kz", desc: "" }
+                ],
+                "Vermute": [
+                    { nome: "Martini Bianco | Rosso", preco: "4.000 Kz", desc: "" },
+                    { nome: "Campari", preco: "4.000 Kz", desc: "" }
+                ],
+                "Gin": [
+                    { nome: "Beefeater Dry", preco: "4.500 Kz | 40.000 Kz", desc: "" },
+                    { nome: "Beefeater Pink", preco: "4.500 Kz | 40.000 Kz", desc: "" },
+                    { nome: "Beefeater 24 Premium", preco: "6.000 Kz | 50.000 Kz", desc: "" },
+                    { nome: "Gordon's London Dry", preco: "5.000 Kz | 50.000 Kz", desc: "" },
+                    { nome: "Gordon's London Pink", preco: "5.000 Kz", desc: "" }
+                ],
+                "Vodka": [
+                    { nome: "Absolut Blue", preco: "3.000 Kz | 30.000 Kz", desc: "" },
+                    { nome: "Eristoff Black", preco: "3.000 Kz", desc: "" }
+                ],
+                "Cachaça": [
+                    { nome: "Chapéu de Palha", preco: "3.000 Kz | 30.000 Kz", desc: "" },
+                    { nome: "Janeiro Super Premium", preco: "3.000 Kz | 30.000 Kz", desc: "" }
+                ],
+                "Whisky": [
+                    { nome: "Jameson Irish", preco: "5.000 Kz | 45.000 Kz", desc: "" },
+                    { nome: "Jameson Black", preco: "8.000 Kz | 75.000 Kz", desc: "" }
+                ],
+                "Rum": [
+                    { nome: "Havana Club 3 Anos", preco: "4.000 Kz", desc: "" },
+                    { nome: "Bacardi Blanc", preco: "5.000 Kz", desc: "" },
+                    { nome: "Malibu Coconot", preco: "4.000 Kz", desc: "" }
+                ],
+                "Brandy": [
+                    { nome: "Brandy 1920", preco: "5.000 Kz | 35.000 Kz", desc: "" },
+                    { nome: "Brandy Constantino", preco: "5.000 Kz | 40.000 Kz", desc: "" }
+                ],
+                "Tequila": [
+                    { nome: "Olmeca Blanco", preco: "3.500 Kz | 30.000 Kz", desc: "" },
+                    { nome: "Camino", preco: "2.500 Kz", desc: "" }
+                ],
+                "Sangria": [
+                    { nome: "Tinto / Branco", preco: "17.000 Kz", desc: "" },
+                    { nome: "Espumante", preco: "27.000 Kz", desc: "" }
+                ]
+            }
         };
 
         function showNotification(message) {
@@ -103,17 +266,37 @@
         }
 
         function switchCategory(cat, btn) {
-            document.querySelectorAll('.category-btn').forEach(b => b.className = "category-btn px-6 py-3 rounded-full text-xs font-black uppercase whitespace-nowrap bg-white/5 text-[#d1c7bd]");
+            document.querySelectorAll('.category-btn').forEach(b => {
+                b.className = "category-btn px-6 py-3 rounded-full text-xs font-black uppercase whitespace-nowrap bg-white/5 text-[#d1c7bd]";
+            });
             btn.className = "category-btn px-6 py-3 rounded-full text-xs font-black uppercase whitespace-nowrap bg-[#e5c158] text-[#150905]";
+            
             const container = document.getElementById('menu-items');
             container.innerHTML = '';
-            // Logic to render items...
+            
+            const categoryData = database[cat];
+            for (const section in categoryData) {
+                const sectionDiv = document.createElement('div');
+                sectionDiv.innerHTML = `<h2 class="text-[#e5c158] font-bold text-sm mb-4 uppercase tracking-widest border-l-2 border-[#e5c158] pl-3">${section}</h2>`;
+                categoryData[section].forEach(item => {
+                    sectionDiv.innerHTML += `
+                        <div class="bg-[#1a110a]/50 p-4 rounded-xl border border-white/5 mb-3 flex justify-between items-center">
+                            <div>
+                                <h3 class="font-bold text-white">${item.nome}</h3>
+                                ${item.desc ? `<p class="text-xs text-[#d1c7bd] mt-1 italic">${item.desc}</p>` : ''}
+                            </div>
+                            <span class="font-bold text-[#e5c158] text-sm whitespace-nowrap ml-4">${item.preco}</span>
+                        </div>
+                    `;
+                });
+                container.appendChild(sectionDiv);
+            }
         }
 
-        document.addEventListener('DOMContentLoaded', () => {
+        window.onload = () => {
             showNotification("Bem-vindo ao Mesa Bar!");
             switchCategory('comidas', document.querySelector('.category-btn'));
-        });
+        };
     </script>
 </body>
 </html>
