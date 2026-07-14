@@ -3,127 +3,95 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mesa Bar - Menu Premium</title>
-    <!-- Font Awesome para ícones de Redes Sociais e Utilidades -->
+    <title>Mesa Bar - Luanda</title>
+    <!-- Font Awesome para os ícones sociais e de navegação -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
-            --bg-color: #0b0c10;
-            --card-bg: #12131c;
-            --accent-gold: #c5a059;
-            --accent-glow: rgba(197, 160, 89, 0.25);
+            --bg-dark: rgba(11, 12, 16, 0.92);
+            --card-bg: rgba(22, 24, 35, 0.95);
+            --accent-gold: #d4af37;
+            --accent-gold-glow: rgba(212, 175, 55, 0.3);
             --text-primary: #ffffff;
-            --text-secondary: #8e92a4;
-            --whatsapp-green: #00e676;
-            --error-red: #ff5252;
+            --text-secondary: #c1c5d6;
+            --whatsapp-green: #25d366;
+            --border-color: rgba(212, 175, 55, 0.15);
         }
 
         body {
-            background-color: var(--bg-color);
+            background-image: linear-gradient(rgba(11, 12, 16, 0.88), rgba(11, 12, 16, 0.96)), url('IMAGEM DE FUNDO.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
             color: var(--text-primary);
-            font-family: 'Inter', system-ui, -apple-system, sans-serif;
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
             margin: 0;
-            padding: 0 0 90px 0;
+            padding: 0 0 100px 0;
             display: flex;
             flex-direction: column;
             align-items: center;
-            overflow-x: hidden;
+            min-height: 100vh;
         }
 
-        /* POP-UP PROMOCIONAL (Utiliza o POP UP.jpg da raiz) */
-        .modal {
-            display: flex;
-            position: fixed;
-            z-index: 2000;
-            left: 0;
-            top: 0;
+        /* BANNER DE DESTAQUE SUPERIOR (MAMBO) */
+        .mambo-banner {
             width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.9);
-            backdrop-filter: blur(8px);
-            justify-content: center;
-            align-items: center;
-            transition: opacity 0.3s ease;
-        }
-        .modal.hidden {
-            opacity: 0;
-            pointer-events: none;
-        }
-        .modal-content {
-            background-color: var(--card-bg);
-            border: 1px solid var(--accent-gold);
-            padding: 20px;
-            border-radius: 20px;
-            max-width: 85%;
-            width: 360px;
+            background-color: #ff8c00;
+            color: #000000;
             text-align: center;
-            position: relative;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-            animation: modalPop 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-        }
-        @keyframes modalPop {
-            from { transform: scale(0.8); opacity: 0; }
-            to { transform: scale(1); opacity: 1; }
-        }
-        .modal-img {
-            width: 100%;
-            border-radius: 12px;
-            margin-bottom: 15px;
-            object-fit: cover;
-            max-height: 250px;
-        }
-        .close-modal-btn {
-            position: absolute;
-            top: -15px;
-            right: -15px;
-            background: var(--accent-gold);
-            color: var(--bg-color);
-            border: none;
-            width: 35px;
-            height: 35px;
-            border-radius: 50%;
-            font-size: 18px;
-            font-weight: bold;
-            cursor: pointer;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+            padding: 8px 10px;
+            font-size: 0.85rem;
+            font-weight: 800;
+            letter-spacing: 1px;
+            text-transform: uppercase;
             display: flex;
             align-items: center;
             justify-content: center;
+            gap: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+        }
+        .mambo-banner i {
+            font-size: 1.1rem;
         }
 
-        /* CABEÇALHO */
+        /* CABEÇALHO COM LOGOTIPO EXTRA GRANDE */
         .header {
             text-align: center;
-            padding: 40px 20px 25px 20px;
+            padding: 40px 20px 20px 20px;
             width: 100%;
-            background: linear-gradient(180deg, #12131c 0%, #0b0c10 100%);
             box-sizing: border-box;
-            border-bottom: 1px solid #1f202e;
+            background: linear-gradient(180deg, rgba(18, 20, 29, 0.95) 0%, rgba(11, 12, 16, 0) 100%);
         }
-        .logo-container {
-            margin-bottom: 15px;
+        .logo-wrap {
+            margin-bottom: 20px;
+            display: inline-block;
+            position: relative;
         }
         .logo {
-            width: 100px;
-            height: 100px;
+            width: 140px; /* Aumentado significativamente */
+            height: 140px;
             border-radius: 50%;
             object-fit: cover;
-            border: 2px solid var(--accent-gold);
-            box-shadow: 0 0 20px var(--accent-glow);
+            border: 3px solid var(--accent-gold);
+            box-shadow: 0 0 25px var(--accent-gold-glow);
+            background-color: #12141d;
         }
         .header h1 {
             color: var(--text-primary);
-            margin: 10px 0 5px 0;
-            font-size: 2rem;
-            letter-spacing: 2px;
+            margin: 5px 0;
+            font-size: 2.4rem;
+            letter-spacing: 4px;
             text-transform: uppercase;
+            font-weight: 800;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
         }
         .header .sub {
             color: var(--accent-gold);
-            font-size: 0.8rem;
-            letter-spacing: 4px;
+            font-size: 0.9rem;
+            letter-spacing: 6px;
             margin-bottom: 15px;
-            font-weight: 600;
+            font-weight: bold;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.8);
         }
         .header .address {
             color: var(--text-secondary);
@@ -131,216 +99,277 @@
             display: inline-flex;
             align-items: center;
             gap: 6px;
-            background: rgba(255,255,255,0.03);
+            background: rgba(0, 0, 0, 0.6);
             padding: 8px 16px;
             border-radius: 30px;
-            border: 1px solid #1f202e;
+            border: 1px solid var(--border-color);
+            backdrop-filter: blur(5px);
         }
 
-        /* BARRA DE CATEGORIAS (SUB-PASTAS DO MENU) */
+        /* NOVO CAMPO: FLYERS DE ATIVIDADES & AGENDA (TOP DE PÁGINA) */
+        .highlights-container {
+            width: 90%;
+            max-width: 600px;
+            margin: 15px auto;
+            text-align: center;
+        }
+        .section-tag {
+            color: var(--accent-gold);
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            font-weight: bold;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+        .section-tag::before, .section-tag::after {
+            content: '';
+            width: 30px;
+            height: 1px;
+            background-color: var(--accent-gold);
+            opacity: 0.5;
+        }
+        .flyer-card {
+            background-color: var(--card-bg);
+            border-radius: 20px;
+            border: 1px solid var(--border-color);
+            overflow: hidden;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+            backdrop-filter: blur(8px);
+            margin-bottom: 25px;
+        }
+        .flyer-img-wrapper {
+            position: relative;
+            width: 100%;
+            padding-top: 130%; /* Mantém proporção do cartaz vertical */
+            background-color: #12141d;
+        }
+        .flyer-img-wrapper img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .flyer-info {
+            padding: 15px 20px;
+            text-align: left;
+            border-top: 1px solid rgba(255,255,255,0.05);
+        }
+        .flyer-title {
+            font-size: 1.1rem;
+            font-weight: bold;
+            color: var(--text-primary);
+            margin: 0 0 5px 0;
+        }
+        .flyer-date {
+            font-size: 0.85rem;
+            color: var(--accent-gold);
+            font-weight: 600;
+        }
+
+        /* INTEGRAL DE ENTREGA MAMBOO */
+        .mamboo-showcase {
+            width: 90%;
+            max-width: 600px;
+            margin: 0 auto 25px auto;
+            background-color: var(--card-bg);
+            border-radius: 20px;
+            border: 1px solid rgba(255,140,0,0.3);
+            overflow: hidden;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+            display: flex;
+            flex-direction: column;
+        }
+        .mamboo-img {
+            width: 100%;
+            height: auto;
+            max-height: 220px;
+            object-fit: cover;
+        }
+        .mamboo-details {
+            padding: 15px;
+            text-align: center;
+            background-color: rgba(255, 140, 0, 0.05);
+        }
+        .mamboo-details p {
+            margin: 0;
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: #ff8c00;
+        }
+
+        /* CATEGORIAS DO MENU */
         .categories-container {
             display: flex;
-            gap: 12px;
+            gap: 10px;
             overflow-x: auto;
             width: 100%;
-            padding: 20px 15px;
+            padding: 15px;
             box-sizing: border-box;
-            background-color: var(--bg-color);
+            background-color: rgba(11, 12, 16, 0.95);
             position: sticky;
             top: 0;
             z-index: 1000;
-            scrollbar-width: none; /* Esconde scroll no Firefox */
+            border-bottom: 1px solid var(--border-color);
+            scrollbar-width: none;
+            backdrop-filter: blur(10px);
         }
         .categories-container::-webkit-scrollbar {
-            display: none; /* Esconde scroll no Chrome/Safari */
+            display: none;
         }
         .category-btn {
-            background-color: var(--card-bg);
+            background-color: rgba(255,255,255,0.03);
             color: var(--text-secondary);
-            border: 1px solid #1f202e;
-            padding: 12px 22px;
+            border: 1px solid rgba(255,255,255,0.08);
+            padding: 10px 18px;
             border-radius: 30px;
             white-space: nowrap;
             cursor: pointer;
-            font-size: 0.9rem;
-            font-weight: 500;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            font-size: 0.85rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
         }
         .category-btn.active {
-            background: linear-gradient(135deg, #c5a059 0%, #a37f3d 100%);
-            color: var(--bg-color);
+            background-color: var(--accent-gold);
+            color: #0b0c10;
             border-color: var(--accent-gold);
-            font-weight: 700;
-            box-shadow: 0 4px 15px rgba(197, 160, 89, 0.3);
-            transform: scale(1.05);
+            box-shadow: 0 4px 12px var(--accent-gold-glow);
         }
 
-        /* SECÇÃO DE ITENS */
+        /* LISTA DE ITENS DO MENU */
         .menu-section {
             width: 90%;
             max-width: 600px;
-            margin: 10px auto;
+            margin: 20px auto;
+        }
+        .menu-subsection-title {
+            color: var(--accent-gold);
+            font-size: 1.1rem;
+            margin: 25px 0 15px 0;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            border-left: 3px solid var(--accent-gold);
+            padding-left: 10px;
         }
         .menu-item {
+            background-color: var(--card-bg);
+            border: 1px solid rgba(255,255,255,0.05);
+            padding: 16px;
+            border-radius: 14px;
+            margin-bottom: 12px;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            background-color: var(--card-bg);
-            border: 1px solid #1f202e;
-            padding: 18px;
-            border-radius: 16px;
-            margin-bottom: 12px;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.15);
-            opacity: 0;
-            transform: translateY(15px);
-            animation: fadeInUp 0.4s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            backdrop-filter: blur(10px);
+            transition: transform 0.2s ease;
         }
-        @keyframes fadeInUp {
-            to { opacity: 1; transform: translateY(0); }
+        .menu-item:hover {
+            transform: translateY(-2px);
+            border-color: rgba(212, 175, 55, 0.3);
         }
         .item-info {
-            max-width: 75%;
+            max-width: 72%;
         }
         .item-name {
-            font-size: 1.1rem;
-            font-weight: 600;
+            font-size: 1.05rem;
+            font-weight: 700;
             color: var(--text-primary);
         }
         .item-desc {
-            font-size: 0.85rem;
+            font-size: 0.8rem;
             color: var(--text-secondary);
-            margin-top: 6px;
+            margin-top: 4px;
             line-height: 1.3;
+        }
+        .item-price-box {
+            text-align: right;
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
         }
         .item-price {
             color: var(--accent-gold);
-            font-weight: 700;
-            font-size: 1.1rem;
+            font-weight: bold;
+            font-size: 1.05rem;
             white-space: nowrap;
         }
-
-        /* AGENDA / CALENDÁRIO */
-        .calendar-section {
-            width: 90%;
-            max-width: 600px;
-            margin: 30px auto;
-            background-color: var(--card-bg);
-            padding: 25px 20px;
-            border-radius: 20px;
-            border: 1px solid #1f202e;
-            box-sizing: border-box;
-        }
-        .calendar-section h3 {
-            color: var(--accent-gold);
-            margin: 0 0 15px 0;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            font-size: 1.2rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-        .event-card {
-            display: flex;
-            gap: 15px;
-            align-items: center;
-            background: rgba(255,255,255,0.02);
-            padding: 15px;
-            border-radius: 12px;
-            border: 1px solid #1f202e;
-            margin-bottom: 10px;
-            text-align: left;
-        }
-        .event-date {
-            background: var(--accent-gold);
-            color: var(--bg-color);
-            padding: 8px 12px;
-            border-radius: 8px;
-            text-align: center;
-            font-weight: 700;
-            min-width: 45px;
-        }
-        .event-date span {
-            display: block;
+        .item-price-sub {
             font-size: 0.7rem;
-            text-transform: uppercase;
-        }
-        .event-info h4 {
-            margin: 0;
-            color: var(--text-primary);
-            font-size: 1rem;
-        }
-        .event-info p {
-            margin: 3px 0 0 0;
             color: var(--text-secondary);
-            font-size: 0.8rem;
+            text-transform: uppercase;
         }
 
         /* REDES SOCIAIS */
         .social-section {
             text-align: center;
-            margin: 35px 0;
+            margin: 40px 0;
             width: 100%;
         }
         .social-section p {
             color: var(--text-secondary);
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             margin-bottom: 15px;
             letter-spacing: 1px;
         }
         .social-icons {
             display: flex;
             justify-content: center;
-            gap: 25px;
+            gap: 20px;
         }
         .social-icons a {
             color: var(--text-secondary);
-            font-size: 1.6rem;
-            transition: all 0.3s ease;
-            text-decoration: none;
-            width: 50px;
-            height: 50px;
+            font-size: 1.5rem;
+            width: 46px;
+            height: 46px;
             background-color: var(--card-bg);
-            border: 1px solid #1f202e;
+            border: 1px solid rgba(255,255,255,0.05);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
+            transition: all 0.3s ease;
+            text-decoration: none;
         }
         .social-icons a:hover {
             color: var(--accent-gold);
             border-color: var(--accent-gold);
-            transform: translateY(-5px);
-            box-shadow: 0 5px 15px var(--accent-glow);
+            transform: translateY(-3px);
+            box-shadow: 0 4px 12px var(--accent-gold-glow);
         }
 
-        /* RODAPÉ E BOTÕES DE AÇÃO */
+        /* BOTÕES DE RODAPÉ FIXOS */
         .footer-buttons {
             position: fixed;
             bottom: 0;
             left: 0;
             width: 100%;
             display: flex;
-            background-color: rgba(18, 19, 28, 0.95);
-            backdrop-filter: blur(10px);
+            background-color: rgba(11, 12, 16, 0.96);
+            backdrop-filter: blur(15px);
             padding: 16px 20px;
             box-sizing: border-box;
             gap: 15px;
-            border-top: 1px solid #1f202e;
-            z-index: 1500;
+            border-top: 1px solid var(--border-color);
+            z-index: 2000;
         }
         .btn {
             flex: 1;
-            padding: 16px;
-            border-radius: 14px;
+            padding: 15px;
+            border-radius: 12px;
             border: none;
             font-size: 0.95rem;
-            font-weight: 700;
+            font-weight: bold;
             cursor: pointer;
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 10px;
+            gap: 8px;
             text-decoration: none;
             transition: all 0.3s ease;
         }
@@ -351,18 +380,17 @@
         }
         .btn-call.sending {
             background-color: var(--accent-gold);
-            color: var(--bg-color);
-            border-color: var(--accent-gold);
+            color: #0b0c10;
         }
         .btn-call.success {
             background-color: var(--whatsapp-green);
-            color: white;
+            color: #ffffff;
             border-color: var(--whatsapp-green);
         }
         .btn-reserve {
-            background: linear-gradient(135deg, #128c7e 0%, #075e54 100%);
+            background-color: var(--whatsapp-green);
             color: #ffffff;
-            box-shadow: 0 4px 15px rgba(18, 140, 126, 0.3);
+            box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);
         }
         .btn-reserve:hover {
             transform: translateY(-2px);
@@ -371,20 +399,15 @@
 </head>
 <body>
 
-    <!-- POP-UP DE ENTRADA (PROMOÇÃO) -->
-    <div id="promoModal" class="modal">
-        <div class="modal-content">
-            <button class="close-modal-btn" onclick="closeModal()">×</button>
-            <img src="POP UP.jpg" alt="Promoção do Dia" class="modal-img" onerror="this.src='https://images.unsplash.com/photo-1543007630-9710e4a00a20?w=500';">
-            <h3 style="color: var(--accent-gold); margin: 10px 0 5px 0;">Menu Executivo 🎉</h3>
-            <p style="color: var(--text-secondary); font-size: 0.85rem; margin: 0 0 10px 0;">Descubra as nossas sugestões gastronómicas para hoje no Mesa Bar!</p>
-        </div>
+    <!-- BANNER MAMBO SUPERIOR -->
+    <div class="mambo-banner">
+        <i class="fas fa-motorcycle"></i> Agora disponíveis para entrega rápida na Mamboo!
     </div>
 
     <!-- CABEÇALHO -->
     <div class="header">
-        <div class="logo-container">
-            <img src="LOGO MESA BAR.jpg" alt="Logo Mesa Bar" class="logo" onerror="this.src='https://images.unsplash.com/photo-1514933651103-005eec06c04b?w=120';">
+        <div class="logo-wrap">
+            <img src="LOGO MESA BAR.jpg" alt="Mesa Bar Logo" class="logo" onerror="this.src='https://images.unsplash.com/photo-1514933651103-005eec06c04b?w=140';">
         </div>
         <h1>Mesa Bar</h1>
         <div class="sub">LUANDA</div>
@@ -393,149 +416,303 @@
         </div>
     </div>
 
-    <!-- SUB-CATEGORIAS DO MENU -->
-    <div class="categories-container">
-        <button class="category-btn active" onclick="showCategory('petiscos', this)">Petiscos & Entradas</button>
-        <button class="category-btn" onclick="showCategory('pratos', this)">Pratos Principais</button>
-        <button class="category-btn" onclick="showCategory('bebidas', this)">Bebidas & Cafés</button>
-        <button class="category-btn" onclick="showCategory('garrafas', this)">Garrafas & Bar</button>
-        <button class="category-btn" onclick="showCategory('doces', this)">Guarnições & Doces</button>
-    </div>
-
-    <!-- LISTA DE PRATOS DINÂMICA -->
-    <div class="menu-section" id="menu-items">
-        <!-- Inserido por Javascript -->
-    </div>
-
-    <!-- CALENDÁRIO / AGENDA SEMANAL -->
-    <div class="calendar-section">
-        <h3><i class="far fa-calendar-alt"></i> Agenda Cultural</h3>
+    <!-- DESTAQUES DA SEMANA (FLYERS & EVENTOS) -->
+    <div class="highlights-container">
+        <div class="section-tag">Destaques & Atividades</div>
         
-        <div class="event-card">
-            <div class="event-date">17<span>Jul</span></div>
-            <div class="event-info">
-                <h4>Noite de Kizomba & Afro-House</h4>
-                <p>A partir das 21h00 - Entrada livre, consumo mínimo.</p>
+        <!-- Cartaz Principal -->
+        <div class="flyer-card">
+            <div class="flyer-img-wrapper">
+                <img src="foto de destaque atividade dia 24 de julho.jpeg" alt="Cocktail de Apresentação" onerror="this.src='https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?w=500';">
+            </div>
+            <div class="flyer-info">
+                <div class="flyer-title">Cocktail de Apresentação de Aniceto & Teidy Cawissi</div>
+                <div class="flyer-date"><i class="far fa-calendar-alt"></i> Sexta-feira, 24 de Julho às 18h00</div>
             </div>
         </div>
+    </div>
 
-        <div class="event-card">
-            <div class="event-date">18<span>Jul</span></div>
-            <div class="event-info">
-                <h4>Grelhados ao Vivo & Acústico</h4>
-                <p>A partir das 13h00 - O melhor almoço de Sábado de Luanda.</p>
-            </div>
+    <!-- SHOWCASE DA PARCERIA MAMBOO -->
+    <div class="mamboo-showcase">
+        <img src="MAMBOO.jpg" alt="Mesa Bar na Mamboo" class="mamboo-img" onerror="this.src='https://images.unsplash.com/photo-1526367790999-0150786486a9?w=500';">
+        <div class="mamboo-details">
+            <p><i class="fas fa-check-circle"></i> Faça o seu pedido diretamente através da App Mamboo!</p>
         </div>
+    </div>
+
+    <!-- BARRA DE CATEGORIAS DO MENU -->
+    <div class="categories-container">
+        <button class="category-btn active" onclick="showCategory('comidas', this)">Menu de Comidas</button>
+        <button class="category-btn" onclick="showCategory('bebidas', this)">Bebidas & Cafetaria</button>
+        <button class="category-btn" onclick="showCategory('bebidas-espirituosas', this)">Bar & Espirituosas</button>
+    </div>
+
+    <!-- LISTA DINÂMICA DE ITENS -->
+    <div class="menu-section" id="menu-items">
+        <!-- Renderizado por JS -->
     </div>
 
     <!-- REDES SOCIAIS -->
     <div class="social-section">
-        <p>Acompanhe-nos Online</p>
+        <p>Acompanhe a nossa agenda diária</p>
         <div class="social-icons">
-            <a href="https://instagram.com/mesabar" target="_blank"><i class="fab fa-instagram"></i></a>
+            <a href="https://instagram.com/restaurante_mesabar" target="_blank"><i class="fab fa-instagram"></i></a>
             <a href="https://facebook.com/mesabar" target="_blank"><i class="fab fa-facebook-f"></i></a>
             <a href="https://wa.me/244900000000" target="_blank"><i class="fab fa-whatsapp"></i></a>
         </div>
     </div>
 
-    <!-- BARRA FIXA DO FUNDO -->
+    <!-- BOTÕES FIXOS DE AÇÃO -->
     <div class="footer-buttons">
         <button id="call-waiter-btn" class="btn btn-call" onclick="triggerCall()">
             <i class="fas fa-bell"></i> Chamar na Mesa <span id="mesa-num"></span>
         </button>
-        <a href="https://wa.me/244900000000?text=Olá,%20gostaria%20de%20reservar%20uma%20mesa%20para%20hoje." target="_blank" class="btn btn-reserve">
+        <a href="https://wa.me/244900000000?text=Olá,%20gostaria%20de%20reservar%20uma%20mesa%20no%20Mesa%20Bar." target="_blank" class="btn btn-reserve">
             <i class="fab fa-whatsapp"></i> Reservar Mesa
         </a>
     </div>
 
     <script>
-        // Fechar o Pop-up Promocional
-        function closeModal() {
-            const modal = document.getElementById('promoModal');
-            modal.classList.add('hidden');
-            setTimeout(() => modal.style.display = 'none', 300);
-        }
-
-        // Ler a Mesa do link (?mesa=5)
+        // Obter número da mesa da URL (?mesa=5)
         const urlParams = new URLSearchParams(window.location.search);
         const mesa = urlParams.get('mesa') || 'Geral';
         document.getElementById('mesa-num').textContent = mesa !== 'Geral' ? mesa : '';
 
-        // Base de Dados do Menu do Mesa Bar
+        // Base de Dados Completa baseada nas imagens de ecrã reais
         const menuData = {
-            petiscos: [
-                { nome: "Chouriço Assado", preco: "4.500 Kz", desc: "Chouriço tradicional de Luanda assado na canoa à mesa." },
-                { nome: "Asas de Frango Grelhadas", preco: "3.800 Kz", desc: "6 unidades de asas bem tostadas com picante da casa." },
-                { nome: "Batata Frita Especial", preco: "2.500 Kz", desc: "Batatas fritas rústicas servidas com maionese de alho caseira." }
-            ],
-            pratos: [
-                { nome: "Grelhada Mista MESA BAR", preco: "9.500 Kz", desc: "Seleção premium de carnes nobres grelhadas no carvão acompanhada com arroz solto." },
-                { nome: "Bitoque da Casa", preco: "6.000 Kz", desc: "Bife tenro com ovo a cavalo, batata frita caseira e molho especial." }
+            comidas: [
+                { section: "Entradas", nome: "Couvert", preco: "4.500 Kz", desc: "Pão, manteiga e azeitonas saborosas." },
+                
+                { section: "Sopas & Caldos", nome: "Caldo Verde", preco: "4.500 Kz", desc: "Couve finamente cortada, rodelas de chouriço e batata." },
+                { section: "Sopas & Caldos", nome: "Caldo de Peixe", preco: "8.000 Kz", desc: "Caldo rico e tradicional de peixe fresco da costa." },
+                
+                { section: "Salgados Diversos", nome: "Dúzia", preco: "8.000 Kz", desc: "Uma seleção frita com 12 salgados quentinhos." },
+                { section: "Salgados Diversos", nome: "Meia Dúzia", preco: "4.500 Kz", desc: "Uma seleção com 6 salgados fritos variados." },
+                
+                { section: "Aperitivos", nome: "Ginguba Torrada", preco: "1.000 Kz", desc: "Ginguba estaladiça torrada no ponto ideal." },
+                { section: "Aperitivos", nome: "Tremoços", preco: "2.500 Kz", desc: "Prato de tremoços temperados para acompanhar." },
+                { section: "Aperitivos", nome: "Azeitonas", preco: "2.500 Kz", desc: "Azeitonas marinadas com azeite e ervas." },
+                
+                { section: "Snacks", nome: "Prego no Pão", preco: "9.000 Kz", desc: "Bife de carne suculenta no pão fresco com molho da casa." },
+                { section: "Snacks", nome: "Tosta Mista", preco: "2.000 Kz", desc: "Tosta clássica com queijo derretido e fiambre." },
+                { section: "Snacks", nome: "Tosta de Atum", preco: "3.000 Kz", desc: "Tosta generosamente recheada com atum temperado." },
+                { section: "Snacks", nome: "Tosta de Frango", preco: "3.000 Kz", desc: "Tosta de frango desfiado com creme especial." },
+                { section: "Snacks", nome: "Bifana no Pão", preco: "6.000 Kz", desc: "Carne de porco marinada e frita à portuguesa." },
+                
+                { section: "Petiscos", nome: "Choco Panado", preco: "8.000 Kz", desc: "Tiras de choco panadas bem crocantes, servidas com limão." },
+                { section: "Petiscos", nome: "Pica-Pau", preco: "7.500 Kz", desc: "Pequenos cubos de carne fritos com pickles e molho de cerveja." },
+                { section: "Petiscos", nome: "Asinhas Panadas", preco: "6.500 Kz", desc: "Asinhas de frango panadas e estaladiças." },
+                { section: "Petiscos", nome: "Moelas", preco: "4.500 Kz", desc: "Moelas estufadas num rico molho de tomate aromático." },
+                { section: "Petiscos", nome: "Peixe Frito", preco: "4.500 Kz", desc: "Peixe pequeno frito, perfeito para picar." },
+                { section: "Petiscos", nome: "Dobradinha", preco: "5.000 Kz", desc: "Tradicional dobradinha estufada com feijão branco." },
+                { section: "Petiscos", nome: "Chouriço Caseiro", preco: "7.500 Kz", desc: "Chouriço artesanal assado." },
+
+                { section: "Pratos Principais - Terra", nome: "Picanha na Chapa", preco: "19.000 Kz", desc: "Servida com batata frita, banana-pão frita, feijão e arroz." },
+                { section: "Pratos Principais - Terra", nome: "Bife à Portuguesa", preco: "22.500 Kz", desc: "Bife com molho de alho e vinho, presunto e batatas fritas rodelas." },
+                { section: "Pratos Principais - Terra", nome: "Gelhado Mista (2X PAX)", preco: "30.000 Kz", desc: "Grande grelhada de carnes mistas com arroz de feijão, batata e salada." },
+                { section: "Pratos Principais - Terra", nome: "Grelhada Mista (1X PAX)", preco: "16.000 Kz", desc: "Dose individual de carnes mistas na brasa com acompanhamentos." },
+                { section: "Pratos Principais - Terra", nome: "Bitoque", preco: "10.000 Kz", desc: "Bife de carne tenra com ovo a cavalo, batata frita e arroz." },
+                { section: "Pratos Principais - Terra", nome: "Frango Na Brasa Inteiro", preco: "21.000 Kz", desc: "Frango de churrasco inteiro com batata frita, arroz, feijão e salada." },
+                { section: "Pratos Principais - Terra", nome: "Frango Na Brasa Meio", preco: "11.000 Kz", desc: "Metade de frango grelhado com os acompanhamentos tradicionais." },
+
+                { section: "Pratos Principais - Mar", nome: "Posta de Peixe Grelhada", preco: "22.500 Kz", desc: "Servido com batata cozida saborosa e legumes salteados frescos." },
+                { section: "Pratos Principais - Mar", nome: "Choco Grelhado", preco: "19.000 Kz", desc: "Choco na brasa com batata cozida e legumes salteados do dia." },
+
+                { section: "Guarnições", nome: "Arroz", preco: "1.500 Kz", desc: "Porção de arroz branco solto." },
+                { section: "Guarnições", nome: "Batata Frita", preco: "1.500 Kz", desc: "Porção de batatas fritas rústicas e estaladiças." },
+                { section: "Guarnições", nome: "Farofa", preco: "1.000 Kz", desc: "Farofa de mandioca tostada com manteiga." },
+                { section: "Guarnições", nome: "Pão ao Alho", preco: "2.500 Kz", desc: "Fatias de pão torradas com manteiga de alho e ervas." },
+                { section: "Guarnições", nome: "Vinagrete", preco: "1.000 Kz", desc: "Salada de vinagrete fresca." },
+                { section: "Guarnições", nome: "Feijão", preco: "1.500 Kz", desc: "Dose de feijão preto guisado." },
+                { section: "Guarnições", nome: "Legumes Salteados", preco: "2.500 Kz", desc: "Legumes frescos salteados no azeite." },
+                { section: "Guarnições", nome: "Couve Mineira", preco: "1.500 Kz", desc: "Couve fininha salteada no alho." },
+
+                { section: "Sobremesas", nome: "Fruta da Época", preco: "1.500 Kz", desc: "Frutas tropicais selecionadas da época cortadas no momento." },
+                { section: "Sobremesas", nome: "Doce da Casa", preco: "3.500 Kz", desc: "Sobremesa doce especial cremosa feita no Mesa Bar." }
             ],
             bebidas: [
-                { nome: "Cuca Mini (Garrafa)", preco: "1.200 Kz", desc: "A cerveja nacional, servida estritamente gelada." },
-                { nome: "Refrigerantes Latas", preco: "1.000 Kz", desc: "Coca-Cola, Fanta ou Sprite (330ml)." },
-                { nome: "Café Expresso", preco: "600 Kz", desc: "Lote premium português." }
+                { section: "Cafetaria", nome: "Café Delta", preco: "1.000 Kz", desc: "Café expresso clássico de excelente lote." },
+                { section: "Cafetaria", nome: "Café Delta c/ Cheirinho", preco: "2.500 Kz", desc: "Expresso Delta acompanhado com um toque de aguardente premium." },
+                { section: "Cafetaria", nome: "Chás Naturais e Saquetas", preco: "1.500 Kz", desc: "Variedade de chás quentes aromáticos de ervas." },
+
+                { section: "Águas", nome: "Água 50cl", preco: "500 Kz", desc: "Garrafa de água mineral lisa." },
+                { section: "Águas", nome: "Água Gaseificada", preco: "2.000 Kz", desc: "Água de mesa com gás." },
+                { section: "Águas", nome: "Água Tónica", preco: "1.000 Kz", desc: "Água tónica perfeita para refrescar ou misturar." },
+
+                { section: "Sumos Naturais", nome: "Sumo Natural (1)", preco: "3.000 Kz", desc: "Sumo espremido na hora com 1 fruta fresca do dia." },
+                { section: "Sumos Naturais", nome: "Sumo Natural (2 ou +)", preco: "4.000 Kz", desc: "Sumo natural misto com duas ou mais frutas selecionadas." },
+
+                { section: "Refrigerantes", nome: "Coca-Cola", preco: "1.000 Kz", desc: "Lata clássica 330ml." },
+                { section: "Refrigerantes", nome: "Pepsi Zero", preco: "1.000 Kz", desc: "Sabor intenso com zero açúcares." },
+                { section: "Refrigerantes", nome: "Sprite / Zero", preco: "1.000 Kz", desc: "Bebida gaseificada com sabor a lima-limão." },
+                { section: "Refrigerantes", nome: "Fanta de Laranja", preco: "1.000 Kz", desc: "Refrescante sabor a laranja de lata." },
+                { section: "Refrigerantes", nome: "Sumol Ananás / Laranja", preco: "1.000 Kz", desc: "Refrigerante de sumo de fruta português de lata." },
+                { section: "Refrigerantes", nome: "Ginger Ale", preco: "1.000 Kz", desc: "Refrigerante aromático de gengibre." },
+                { section: "Refrigerantes", nome: "Energético", preco: "3.000 Kz", desc: "Bebida energética estimulante." },
+                { section: "Refrigerantes", nome: "Smirnoff Guaraná", preco: "1.500 Kz", desc: "Bebida mista refrescante de guaraná." },
+                { section: "Refrigerantes", nome: "Booster Maçã / Morango", preco: "1.300 Kz", desc: "Sumo enriquecido gaseificado refrescante." },
+
+                { section: "Vinhos por Copo", nome: "Vinho Tinto / Branco (Copo)", preco: "3.000 Kz", desc: "Servido fresco em copo de vinho." },
+                { section: "Vinhos em Garrafa", nome: "Mateus Rosé", preco: "12.000 Kz", desc: "Vinho rosé leve, fresco e ligeiramente espumante de garrafa." },
+                { section: "Vinhos em Garrafa", nome: "Espumante Moscato", preco: "20.000 Kz", desc: "Espumante doce e requintado com notas florais." },
+
+                { section: "Cerveja de Pressão & Garrafa", nome: "Lambreta (Fino Cuca / Eka 25cl)", preco: "500 Kz", desc: "Mini caneca de cerveja leve bem gelada tirada à pressão." },
+                { section: "Cerveja de Pressão & Garrafa", nome: "Fino (33cl)", preco: "800 Kz", desc: "Fino imperial servido gelado de pressão." },
+                { section: "Cerveja de Pressão & Garrafa", nome: "Tulipa (Copo Fino)", preco: "1.000 Kz", desc: "Copo de pressão tipo tulipa clássico." },
+                { section: "Cerveja de Pressão & Garrafa", nome: "Panachê (Cerveja c/ Limonada)", preco: "2.000 Kz", desc: "Mistura refrescante de cerveja de pressão e refrigerante de limão." },
+                { section: "Cerveja de Pressão & Garrafa", nome: "Tango (Cerveja c/ Sumo)", preco: "2.000 Kz", desc: "Bebida clássica misturando cerveja de pressão e xarope/sumo doce." },
+                { section: "Cerveja de Pressão & Garrafa", nome: "Heineken (Garrafa)", preco: "3.000 Kz", desc: "Cerveja de garrafa premium internacional bem gelada." },
+
+                { section: "Cocktails Clássicos", nome: "Caipirinha", preco: "4.000 Kz", desc: "Cachaça brasileira, lima fresca, açúcar e gelo picado." },
+                { section: "Cocktails Clássicos", nome: "Caipirosca", preco: "4.000 Kz", desc: "Vodka suave misturada com lima, açúcar e gelo picado." },
+                { section: "Cocktails Clássicos", nome: "Caipiblack", preco: "4.000 Kz", desc: "Variação escura e aromática da caipirinha." },
+                { section: "Cocktails Clássicos", nome: "Mojito Sem Álcool", preco: "3.000 Kz", desc: "Hortelã, lima, xarope de açúcar e água com gás refrescante." },
+                { section: "Cocktails Clássicos", nome: "Mojito Tradicional", preco: "4.000 Kz", desc: "Rum branco, folhas de hortelã frescas, sumo de lima e soda." },
+                { section: "Cocktails Clássicos", nome: "Margarita", preco: "5.000 Kz", desc: "Tequila selecionada, triple sec e sumo de lima fresca com rebordo de sal." },
+                { section: "Cocktails Clássicos", nome: "Pinã Colada", preco: "6.000 Kz", desc: "Rum branco, sumo de ananás, creme de coco encorpado e gelo batido." },
+                { section: "Cocktails Clássicos", nome: "Whisky Sour", preco: "6.000 Kz", desc: "Whisky, sumo de limão fresco, açúcar e clara de ovo." },
+                { section: "Cocktails Clássicos", nome: "Daiquiri", preco: "4.000 Kz", desc: "Rum, sumo de lima e xarope de açúcar simples batido com gelo." }
             ],
-            garrafas: [
-                { nome: "Whisky Logan (Garrafa)", preco: "25.000 Kz", desc: "Servido com balde de gelo e rodelas de limão." },
-                { nome: "Vinho Tinto Alentejano", preco: "12.000 Kz", desc: "Garrafa de 750ml ideal para acompanhar as nossas carnes grelhadas." }
-            ],
-            doces: [
-                { nome: "Mousse de Chocolate", preco: "2.000 Kz", desc: "Textura cremosa artesanal com raspas de chocolate belga." },
-                { nome: "Salada de Fruta Tropical", preco: "1.800 Kz", desc: "Seleção fresca de frutas tropicais cortadas na hora." }
+            'bebidas-espirituosas': [
+                { section: "Gin Beefeater", nome: "Beefeater Dry", preco: "4.500 Kz", preco_sub: "Garrafa: 40.000 Kz", desc: "Gin clássico London Dry aromático." },
+                { section: "Gin Beefeater", nome: "Beefeater Pink", preco: "4.500 Kz", preco_sub: "Garrafa: 40.000 Kz", desc: "Gin frutado com sabor natural a morango." },
+                { section: "Gin Beefeater", nome: "Beefeater 24 Premium", preco: "6.000 Kz", preco_sub: "Garrafa: 50.000 Kz", desc: "Gin de alta gama selecionado." },
+
+                { section: "Gin Gordon's", nome: "Gordon's London Dry", preco: "5.000 Kz", preco_sub: "Garrafa: 50.000 Kz", desc: "Gin destilado com notas de zimbro tradicionais." },
+                { section: "Gin Gordon's", nome: "Gordon's London Pink", preco: "5.000 Kz", desc: "Edição rosa refrescante com notas de frutos vermelhos." },
+
+                { section: "Vodka Premium", nome: "Absolut Blue", preco: "3.000 Kz", preco_sub: "Garrafa: 30.000 Kz", desc: "Vodka sueca destilada pura." },
+                { section: "Vodka Premium", nome: "Eristoff Black", preco: "3.000 Kz", desc: "Licor de vodka com sabor a bagas silvestres." },
+
+                { section: "Cachaça", nome: "Chapéu de Palha", preco: "3.000 Kz", preco_sub: "Garrafa: 30.000 Kz", desc: "Cachaça brasileira para cocktails ou shots." },
+                { section: "Cachaça", nome: "Janeiro Super Premium", preco: "3.000 Kz", preco_sub: "Garrafa: 30.000 Kz", desc: "Cachaça envelhecida premium." },
+
+                { section: "Whisky", nome: "Jameson Irish", preco: "5.000 Kz", preco_sub: "Garrafa: 45.000 Kz", desc: "Whisky irlandês triplamente destilado e muito suave." },
+                { section: "Whisky", nome: "Jameson Black Barrel", preco: "8.000 Kz", preco_sub: "Garrafa: 75.000 Kz", desc: "Edição enriquecida em barris de carvalho tostados." },
+
+                { section: "Licores", nome: "Amarula", preco: "4.000 Kz", desc: "Licor de marula cremoso sul-africano." },
+                { section: "Licores", nome: "Licor Beirão", preco: "4.000 Kz", desc: "O licor tradicional português com plantas aromáticas." },
+                { section: "Licores", nome: "Blue Coração", preco: "4.000 Kz", desc: "Licor azul doce de laranja curaçau." },
+                { section: "Licores", nome: "Batida de Côco", preco: "4.000 Kz", desc: "Creme suave de coco e cachaça." },
+                { section: "Licores", nome: "Triple Seco", preco: "5.000 Kz", desc: "Licor cítrico de laranja concentrado." },
+                { section: "Licores", nome: "Absinto", preco: "4.000 Kz", desc: "Bebida espirituosa forte e herbácea de anis." },
+                { section: "Licores", nome: "Xarope de Groselha", preco: "3.000 Kz", desc: "Dose de xarope aromático de groselhas vermelhas." },
+
+                { section: "Rum", nome: "Havana Club 3 Anos", preco: "4.000 Kz", desc: "Rum cubano leve e aromático." },
+                { section: "Rum", nome: "Bacardi Blanc", preco: "5.000 Kz", desc: "Rum branco suave tradicional." },
+                { section: "Rum", nome: "Malibu Coconut", preco: "4.000 Kz", desc: "Licor de rum branco com extrato natural de coco." },
+
+                { section: "Brandy", nome: "Brandy Macieira 1920", preco: "5.000 Kz", preco_sub: "Garrafa: 35.000 Kz", desc: "Brandy português envelhecido." },
+                { section: "Brandy", nome: "Brandy Constantino", preco: "5.000 Kz", preco_sub: "Garrafa: 40.000 Kz", desc: "Brandy português encorpado." },
+
+                { section: "Tequila", nome: "Olmeca Blanco", preco: "3.500 Kz", preco_sub: "Garrafa: 30.000 Kz", desc: "Tequila branca mexicana límpida." },
+                { section: "Tequila", nome: "Camino", preco: "2.500 Kz", desc: "Shot de tequila dourada tradicional." },
+
+                { section: "Sangrias Literas", nome: "Sangria Tinta ou Branca (1L)", preco: "17.000 Kz", desc: "Jarra generosa com fruta fresca macerada em vinho." },
+                { section: "Sangrias Literas", nome: "Sangria de Espumante (1L)", preco: "27.000 Kz", desc: "Jarra premium com fruta fresca e espumante." },
+
+                { section: "Vermute & Aperitivos", nome: "Martini Bianco / Rosso", preco: "4.000 Kz", desc: "Vermute italiano servido com gelo e limão." },
+                { section: "Vermute & Aperitivos", nome: "Campari", preco: "4.000 Kz", desc: "Aperitivo amargo clássico italiano." }
             ]
         };
 
-        // Mostrar os Pratos com efeito de Transição (fade-in)
+        // Função principal para renderizar os itens com base nas categorias
         function showCategory(category, button) {
-            // Atualizar o botão ativo
+            // Destacar o botão de categoria ativo
             document.querySelectorAll('.category-btn').forEach(btn => btn.classList.remove('active'));
             button.classList.add('active');
 
             const container = document.getElementById('menu-items');
             container.innerHTML = '';
 
-            if (menuData[category]) {
-                menuData[category].forEach((item, index) => {
-                    const itemHTML = `
-                        <div class="menu-item" style="animation-delay: ${index * 0.1}s">
+            const items = menuData[category];
+            if (items) {
+                // Organizar os artigos pelas suas respetivas secções / subcategorias
+                const sections = {};
+                items.forEach(item => {
+                    if (!sections[item.section]) {
+                        sections[item.section] = [];
+                    }
+                    sections[item.section].push(item);
+                });
+
+                // Criar as subcategorias visuais com os seus respetivos itens
+                for (const sectionName in sections) {
+                    const subSectionHTML = document.createElement('div');
+                    subSectionHTML.className = 'menu-subsection-title';
+                    subSectionHTML.innerHTML = `<i class="fas fa-chevron-right" style="font-size:0.8rem; margin-right:5px; color:var(--accent-gold);"></i> ${sectionName}`;
+                    container.appendChild(subSectionHTML);
+
+                    sections[sectionName].forEach(item => {
+                        const itemCard = document.createElement('div');
+                        itemCard.className = 'menu-item';
+                        
+                        let priceSection = `<div class="item-price">${item.preco}</div>`;
+                        if (item.preco_sub) {
+                            priceSection = `
+                                <div class="item-price-box">
+                                    <div class="item-price">${item.preco}</div>
+                                    <div class="item-price-sub">${item.preco_sub}</div>
+                                </div>
+                            `;
+                        }
+
+                        itemCard.innerHTML = `
                             <div class="item-info">
                                 <div class="item-name">${item.nome}</div>
                                 <div class="item-desc">${item.desc}</div>
                             </div>
-                            <div class="item-price">${item.preco}</div>
-                        </div>
-                    `;
-                    container.innerHTML += itemHTML;
-                });
+                            ${priceSection}
+                        `;
+                        container.appendChild(itemCard);
+                    });
+                }
             }
         }
 
-        // Iniciar com a primeira categoria ativa por padrão
-        showCategory('petiscos', document.querySelector('.category-btn'));
+        // Carregar automaticamente a primeira categoria ao entrar na página
+        showCategory('comidas', document.querySelector('.category-btn'));
 
-        // Animação Interativa do Botão de Chamada
+        // Animação e integração de chamada em tempo real (Simulado para Firebase)
         function triggerCall() {
             const btn = document.getElementById('call-waiter-btn');
             
-            // Estado: A Conectar
             btn.classList.add('sending');
-            btn.innerHTML = `<i class="fas fa-spinner fa-spin"></i> A ligar ao bar...`;
+            btn.innerHTML = `<i class="fas fa-spinner fa-spin"></i> A enviar...`;
             
-            // Simular conexão de 1.5s com o Firebase
             setTimeout(() => {
                 btn.className = 'btn btn-call success';
                 btn.innerHTML = `<i class="fas fa-check-circle"></i> Chamado Enviado! ✓`;
                 
-                // Resetar o botão de volta ao normal após 3 segundos
                 setTimeout(() => {
                     btn.className = 'btn btn-call';
                     btn.innerHTML = `<i class="fas fa-bell"></i> Chamar na Mesa ${mesa !== 'Geral' ? mesa : ''}`;
                 }, 3000);
-                
-            }, 1500);
+            }, 1200);
         }
     </script>
 </body>
 </html>
+```
+eof
+
+---
+
+### Passo 4: Guardar as alterações no GitHub
+
+1. Vá ao fundo da página no GitHub.
+2. Certifique-se de que a opção **`Commit directly to the "main" branch`** está selecionada com a bolinha azul.
+3. Clique no botão verde **`Commit changes`**.
+
+---
+
+### O Seu Novo Link Oficial (Dê-lhe 30 segundos para carregar):
+👉 **[https://paiguda.github.io/mesabar/?mesa=5](https://paiguda.github.io/mesabar/?mesa=5)**
+
+### O que vai notar de fantástico agora no seu telemóvel:
+* A fachada iluminada do **Mesa Bar** surge como um fundo lindíssimo de luxo.
+* O vosso logótipo está enorme e glorioso no topo.
+* O cartaz promocional da dupla **Aniceto & Teidy Cawissi** para o dia 24 de Julho destaca-se no topo de forma elegante e integrada na estrutura.
+* O menu foi completamente recheado com **todas as entradas, petiscos, pratos principais de terra e mar, dezenas de bebidas e a secção completa do bar de espirituosas** (Rum, Brandy, Tequila, Gin Gordon's, etc.) exatamente como nas folhas originais!
+
+Atualize o seu ficheiro com este código e veja a enorme diferença no design e no conteúdo. Aguardo ansiosamente pelo seu feedback!
