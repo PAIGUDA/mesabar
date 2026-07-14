@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mesa Bar Luanda - Menu Digital Premium</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Plus+Jakarta+Sans:wght@400;600;800&display=swap" rel="stylesheet">
+    
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-database.js"></script>
+
+    <style>
+        body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: #110a05; color: #f3f4f6; -webkit-tap-highlight-color: transparent; }
+        .font-serif { font-family: 'Playfair Display', serif; }
+        .bg-mesa-dark { background-color: #18100a; }
+        .bg-mesa-card { background-color: #1f150e; }
+        .text-mesa-gold { color: #d4af37; }
+        .bg-mesa-gold { background-color: #d4af37; }
+        .scrollbar-none::-webkit-scrollbar { display: none; }
+    </style>
+</head>
+<body class="pb-36 select-none">
+
+    <div id="eventPopup" class="fixed inset-0 z-50 flex items-center justify-center bg-black/90 p-4 transition-opacity duration-300">
+        <div class="bg-mesa-dark border border-amber-500/20 rounded-2xl max-w-md w-full overflow-hidden shadow-2xl relative">
+            <button onclick="closePopup()" class="absolute top-4 right-4 bg-black/70 text-white w-10 h-10 rounded-full flex items-center justify-center hover:bg-mesa-gold hover:text-black z-10 cursor-pointer">
+                <i class="fa-solid fa-xmark text-lg"></i>
+            </button>
+            <div class="relative pt-[125%] bg-cover bg-center" style="background-image: url('POP UP.jpg');"></div>
+            <div class="p-4 bg-mesa-dark flex gap-2">
+                <button onclick="closePopup()" class="flex-1 py-3 border border-white/10 rounded-xl text-xs font-medium cursor-pointer">Ver o Menu</button>
+                <a href="https://wa.me/244933809681?text=Olá!%20Gostaria%20de%20reservar%20uma%20mesa%20para%20o%20evento%20de%20Música%20ao%20Vivo." target="_blank" class="flex-2 py-3 bg-mesa-gold text-black font-bold rounded-xl text-xs flex items-center justify-center gap-2 shadow-lg">
+                    <i class="fa-solid fa-chair"></i> Reservar via WhatsApp
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <header class="relative bg-mesa-dark pt-10 pb-6 text-center px-4">
+        <h1 class="font-serif text-3xl font-bold text-mesa-gold tracking-widest uppercase">Mesa Bar</h1>
+        <p class="text-[10px] text-gray-400 font-sans tracking-widest uppercase mt-0.5">Luanda</p>
+        
+        <p class="text-[11px] text-gray-400 mt-2 max-w-xs mx-auto hover:text-mesa-gold transition-colors">
+            <a href="https://maps.app.goo.gl/z1t1vbiseD8JPaoo8" target="_blank" class="inline-flex items-center justify-center gap-1">
+                <i class="fa-solid fa-location-dot text-mesa-gold"></i> Rua Cónego Manuel das Neves, Kinaxixi, Luanda
+            </a>
+        </p>
+    </header>
+
+    <nav class="sticky top-0 z-40 bg-[#110a05]/95 backdrop-blur-md py-4 border-b border-white/5 overflow-x-auto scrollbar-none px-4 flex gap-2">
+        <button onclick="filterCategory('petiscos-entradas', this)" class="cat-btn bg-mesa-gold text-black px-4 py-2 rounded-full text-xs font-semibold tracking-wide cursor-pointer">Petiscos & Entradas</button>
+        <button onclick="filterCategory('pratos-principais', this)" class="cat-btn bg-transparent border border-[#382a1c] text-gray-300 px-4 py-2 rounded-full text-xs font-semibold tracking-wide cursor-pointer">Pratos Principais</button>
+        <button onclick="filterCategory('bebidas-cafes', this)" class="cat-btn bg-transparent border border-[#382a1c] text-gray-300 px-4 py-2 rounded-full text-xs font-semibold tracking-wide cursor-pointer">Bebidas & Cafés</button>
+        <button onclick="filterCategory('garrafas-bar', this)" class="cat-btn bg-transparent border border-[#382a1c] text-gray-300 px-4 py-2 rounded-full text-xs font-semibold tracking-wide cursor-pointer">Garrafas & Bar</button>
+        <button onclick="filterCategory('guarnicoes-doces', this)" class="cat-btn bg-transparent border border-[#382a1c] text-gray-300 px-4 py-2 rounded-full text-xs font-semibold tracking-wide cursor-pointer">Guarnições & Doces</button>
+    </nav>
+
+    <main class="px-4 mt-6">
+        <p class="text-[11px] text-gray-500 italic mb-4"><i class="fa-solid fa-hand-pointer text-mesa-gold mr-1 animate-bounce"></i> Toque numa subcategoria abaixo para ver as opções:</p>
+        <div id="menuSectionsContainer" class="space-y-3"></div>
+    </main>
+
+    <div class="fixed bottom-0 left-0 right-0 z-40 bg-mesa-dark/95 backdrop-blur-md border-t border-white/5 px-4 py-4 flex flex-col gap-2 max-w-xl mx-auto rounded-t-2xl shadow-2xl">
+        <div id="countdownPanel" class="hidden text-center text-[11px] text-amber-500 font-medium bg-amber-950/20 py-1 rounded-lg border border-amber-500/10">
+            A alertar o Monitor do Bar... Aguarde <span id="timerSeconds">30</span>s ou force o envio abaixo.
+        </div>
+        <div class="flex items-center justify-between gap-2 w-full">
+            <button id="btnGarcon" onclick="solicitarAtendimento()" class="flex-1 py-3 bg-white/5 border border-white/10 text-white rounded-xl text-xs font-bold flex items-center justify-center gap-2 active:scale-95 transition-all cursor-pointer">
+                <i id="iconGarcon" class="fa-solid fa-bell text-mesa-gold"></i> <span id="textGarcon">Chamar na <span id="mesaLabel">Mesa</span></span>
+            </button>
+            <a href="https://wa.me/244933809681?text=Olá!%20Gostaria%20de%20reservar%20uma%20mesa." target="_blank" class="flex-1 py-3 bg-green-600 text-white rounded-xl text-xs font-bold flex items-center justify-center gap-2 active:scale-95 shadow-lg">
+                <i class="fa-brands fa-whatsapp text-base"></i> Reservar Mesa
+            </a>
+        </div>
+    </div>
+
+    <script>
+        // CONFIGURAÇÃO DO GOOGLE FIREBASE
+        // TODO: Substitua o link abaixo pelo link que copiou no PASSO 1 (Deixe as aspas!)
+        const firebaseConfig = {
+            databaseURL: "AQUI_VAI_O_SEU_LINK_DO_FIREBASE" 
+        };
+        firebase.initializeApp(firebaseConfig);
+        const database = firebase.database();
+
+        // Identifica a mesa de forma inteligente através do link (?mesa=5)
+        const urlParams = new URLSearchParams(window.location.search);
+        const numeroMesa = urlParams.get('mesa') || 'Balcão';
+        document.getElementById('mesaLabel').innerText = `Mesa ${numeroMesa}`;
+
+        let countdownTimer = null;
+        let canCallFallback = false;
+
+        // Base de dados de pratos
+        const menuData = [
+            { nome: "Couvert", desc: "Pão, manteiga e azeitonas", preco: "4.500 Kz", subcat: "Entradas", tipo: "petiscos-entradas", foto: "couvert.jpg" },
+            { nome: "Caldo Verde", desc: "Couve, chouriço e batatas", preco: "4.500 Kz", subcat: "Sopas & Caldos", tipo: "petiscos-entradas", foto: "caldo_verde.jpg" },
+            { nome: "Caldo de Peixe", desc: "Caldo rico tradicional com peixe fresco", preco: "8.000 Kz", subcat: "Sopas & Caldos", tipo: "petiscos-entradas", foto: "caldo_peixe.jpg" },
+            { nome: "Salgados Diversos (Dúzia)", desc: "Rissóis, croquetes e pastéis artesanais", preco: "8.000 Kz", subcat: "Salgados", tipo: "petiscos-entradas", foto: "salgados_duzia.jpg" },
+            { nome: "Picanha na Chapa", desc: "Acompanha batata frita, feijão e arroz", preco: "19.000 Kz", subcat: "Grelhados da Terra", tipo: "pratos-principais", foto: "picanha.jpg" },
+            { nome: "Posta De Peixe Grelhada", desc: "Acompanhada de batata cozida e legumes", preco: "22.500 Kz", subcat: "Sabores do Mar", tipo: "pratos-principais", foto: "peixe_grelhado.jpg" },
+            { nome: "Café Delta", desc: "Expresso Delta perfeito", preco: "1.000 Kz", subcat: "Cafetaria", tipo: "bebidas-cafes", foto: "cafe.jpg" },
+            { nome: "Lambreta", desc: "Imperial de pressão extra fria", preco: "500 Kz", subcat: "Cervejas", tipo: "bebidas-cafes", foto: "lambreta.jpg" },
+            { nome: "Whisky Jameson Irish", desc: "Dose premium de malte irlandês", preco: "5.000 Kz", subcat: "Espirituosas & Destilados", tipo: "garrafas-bar", foto: "jameson.jpg" },
+            { nome: "Doce da Casa", desc: "Sobremesa cremosa e artesanal do Mesa Bar", preco: "3.500 Kz", subcat: "Sobremesas", tipo: "guarnicoes-doces", foto: "doce_casa.jpg" }
+        ];
+
+        function generateId(str) {
+            return 'sub-' + str.toLowerCase().replace(/[^a-z0-9]/g, '-');
+        }
+
+        function renderMenu(filterType) {
+            const container = document.getElementById('menuSectionsContainer');
+            container.innerHTML = '';
+            const filteredItems = menuData.filter(item => item.tipo === filterType);
+            const subcategories = [...new Set(filteredItems.map(item => item.subcat))];
+
+            subcategories.forEach(subcat => {
+                const subcatId = generateId(subcat);
+                let sectionHtml = `
+                    <div class="bg-mesa-card border border-white/5 rounded-2xl overflow-hidden shadow-md">
+                        <button onclick="toggleSubcategory('${subcatId}')" class="w-full p-4 flex justify-between items-center bg-mesa-dark/50 border-b border-white/5 cursor-pointer">
+                            <span class="font-serif text-sm text-white font-bold tracking-wide uppercase flex items-center gap-2">
+                                <span class="w-1 h-3 bg-mesa-gold rounded-full"></span> ${subcat}
+                            </span>
+                            <i id="icon-${subcatId}" class="fa-solid fa-chevron-down text-mesa-gold text-xs transition-transform duration-300"></i>
+                        </button>
+                        <div id="${subcatId}" class="hidden p-3 space-y-3 bg-[#130b06]">
+                `;
+
+                filteredItems.filter(item => item.subcat === subcat).forEach(item => {
+                    sectionHtml += `
+                        <div class="bg-mesa-card/80 border border-white/5 p-3 rounded-xl flex items-center justify-between">
+                            <div class="flex items-center gap-3">
+                                <div class="w-14 h-14 rounded-xl bg-black/40 overflow-hidden flex-shrink-0">
+                                    <img src="${item.foto}" alt="${item.nome}" onerror="this.onerror=null; this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' fill=\'none\' viewBox=\'0 0 24 24\' stroke=\'%23d4af37\'><path stroke-linecap=\'round\' stroke-linejoin=\'round\' stroke-width=\'1.5\' d=\'M2.25 15.75l5.159-5.159a2.25 2.25 0 013.182 0l5.159 5.159m-1.5-1.5l1.409-1.409a2.25 2.25 0 013.182 0l2.909 2.909m-18 3.75h16.5a1.5 1.5 0 001.5-1.5V6a1.5 1.5 0 00-1.5-1.5H3.75A1.5 1.5 0 002.25 6v12a1.5 1.5 0 001.5 1.5zm10.5-11.25h.008v.008h-.008V6.75zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z\'/></svg>';" class="w-full h-full object-cover">
+                                </div>
+                                <div>
+                                    <h4 class="text-sm font-semibold text-white">${item.nome}</h4>
+                                    <p class="text-[11px] text-gray-400 mt-0.5 leading-tight max-w-[180px]">${item.desc}</p>
+                                </div>
+                            </div>
+                            <span class="text-sm font-bold text-mesa-gold whitespace-nowrap pl-2">${item.preco}</span>
+                        </div>
+                    `;
+                });
+                sectionHtml += `</div></div>`;
+                container.innerHTML += sectionHtml;
+            });
+        }
+
+        function toggleSubcategory(id) {
+            const el = document.getElementById(id);
+            const icon = document.getElementById('icon-' + id);
+            el.classList.toggle('hidden');
+            icon.classList.toggle('rotate-180');
+        }
+
+        function filterCategory(type, element) {
+            document.querySelectorAll('.cat-btn').forEach(btn => btn.classList.replace('bg-mesa-gold', 'bg-transparent'));
+            document.querySelectorAll('.cat-btn').forEach(btn => btn.classList.replace('text-black', 'text-gray-300'));
+            element.classList.replace('bg-transparent', 'bg-mesa-gold');
+            element.classList.replace('text-gray-300', 'text-black');
+            renderMenu(type);
+        }
+
+        // COMUNICAR DIRETAMENTE COM A BASE DE DADOS GOOGLE EM TEMPO REAL
+        function solicitarAtendimento() {
+            if (canCallFallback) {
+                const msg = `[URGENTE] Mesa ${numeroMesa} aguarda atendimento físico no bar.`;
+                window.open(`https://wa.me/244933809681?text=${encodeURIComponent(msg)}`, '_blank');
+                return;
+            }
+
+            // Envia o alerta para o Firebase com carimbo de data/hora
+            database.ref('chamados/' + numeroMesa).set({
+                mesa: numeroMesa,
+                dataHora: new Date().toLocaleTimeString(),
+                estado: "pendente"
+            });
+
+            // Altera o ecrã do cliente mostrando contagem de 30 segundos
+            const btn = document.getElementById('btnGarcon');
+            const icon = document.getElementById('iconGarcon');
+            const text = document.getElementById('textGarcon');
+            const panel = document.getElementById('countdownPanel');
+            const timerSec = document.getElementById('timerSeconds');
+
+            btn.disabled = true;
+            icon.className = "fa-solid fa-spinner animate-spin text-amber-500";
+            text.innerText = "A chamar monitor...";
+            panel.classList.remove('hidden');
+
+            let timeLeft = 30;
+            clearInterval(countdownTimer);
+            countdownTimer = setInterval(() => {
+                timeLeft--;
+                timerSec.innerText = timeLeft;
+
+                if (timeLeft <= 0) {
+                    clearInterval(countdownTimer);
+                    canCallFallback = true;
+                    btn.disabled = false;
+                    btn.classList.add('bg-red-600', 'text-white');
+                    icon.className = "fa-brands fa-whatsapp";
+                    text.innerText = "Sem resposta? Chame no WhatsApp";
+                    panel.innerText = "⚠️ Sem resposta no bar. Clique para enviar SMS via WhatsApp.";
+                }
+            }, 1000);
+        }
+
+        function closePopup() { document.getElementById('eventPopup').classList.add('hidden'); }
+        window.onload = () => { renderMenu('petiscos-entradas'); };
+    </script>
+</body>
+</html>
