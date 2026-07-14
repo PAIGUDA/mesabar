@@ -9,9 +9,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     
     <style>
-        :root {
-            --accent-gold: #e5c158;
-        }
+        :root { --accent-gold: #e5c158; }
         body {
             font-family: 'Inter', sans-serif;
             background-image: linear-gradient(rgba(10, 6, 3, 0.92), rgba(15, 9, 5, 0.96)), url('IMAGEM DE FUNDO.jpg');
@@ -31,7 +29,7 @@
 
     <header class="w-full max-w-2xl mx-auto text-center pt-12 pb-8 px-4 flex flex-col items-center">
         <div class="relative mb-6">
-            <img src="LOGO MESA BAR.jpg" alt="Logótipo Mesa Bar" class="w-44 h-44 rounded-full object-cover border-4 border-[#e5c158] shadow-[0_0_30px_rgba(229,193,88,0.3)] bg-[#1a110a]" onerror="this.src='https://placehold.co/180x180/1a110a/e5c158?text=Mesa+Bar';">
+            <img src="LOGO MESA BAR.jpg" alt="Logótipo Mesa Bar" class="w-44 h-44 rounded-full object-cover border-4 border-[#e5c158] shadow-[0_0_30px_rgba(229,193,88,0.3)] bg-[#1a110a]" onerror="this.src='https://placehold.co/180x180/1a110a/e5c158?text=Logo';">
         </div>
         <h1 class="text-4xl font-black tracking-widest uppercase text-white drop-shadow-md">Mesa Bar</h1>
         <div class="text-[#e5c158] text-xs tracking-[0.5em] font-bold mt-2 mb-6">LUANDA</div>
@@ -72,7 +70,7 @@
         <div class="flex gap-4 overflow-x-auto pb-4 px-2 no-scrollbar snap-x justify-center">
             <div class="min-w-[280px] bg-[#1a110a]/95 rounded-2xl border border-[#e5c158]/20 overflow-hidden snap-center shadow-lg flex-shrink-0">
                 <div class="relative w-full pt-[135%] bg-black/40">
-                    <img src="foto de destaque atividade dia 24 de julho.jpeg" alt="Evento" class="absolute inset-0 w-full h-full object-cover" onerror="this.src='https://placehold.co/340x460/1a110a/e5c158?text=Dia+24+Julho';">
+                    <img src="foto de destaque atividade dia 24 de julho.jpeg" alt="Evento" class="absolute inset-0 w-full h-full object-cover" onerror="this.src='https://placehold.co/340x460/1a110a/e5c158?text=Evento';">
                 </div>
                 <div class="p-4 border-t border-white/5 text-left">
                     <h3 class="text-sm font-extrabold text-white">Aniceto & Teidy</h3>
@@ -259,43 +257,59 @@
         };
 
         function showNotification(message) {
-            const alertBox = document.getElementById('custom-alert');
-            alertBox.textContent = message;
-            alertBox.classList.remove('hidden');
-            setTimeout(() => alertBox.classList.add('hidden'), 3000);
+            try {
+                const alertBox = document.getElementById('custom-alert');
+                if (!alertBox) return;
+                alertBox.textContent = message;
+                alertBox.classList.remove('hidden');
+                setTimeout(() => alertBox.classList.add('hidden'), 3000);
+            } catch(e) { console.error("Error showing notification", e); }
         }
 
         function switchCategory(cat, btn) {
-            document.querySelectorAll('.category-btn').forEach(b => {
-                b.className = "category-btn px-6 py-3 rounded-full text-xs font-black uppercase whitespace-nowrap bg-white/5 text-[#d1c7bd]";
-            });
-            btn.className = "category-btn px-6 py-3 rounded-full text-xs font-black uppercase whitespace-nowrap bg-[#e5c158] text-[#150905]";
-            
-            const container = document.getElementById('menu-items');
-            container.innerHTML = '';
-            
-            const categoryData = database[cat];
-            for (const section in categoryData) {
-                const sectionDiv = document.createElement('div');
-                sectionDiv.innerHTML = `<h2 class="text-[#e5c158] font-bold text-sm mb-4 uppercase tracking-widest border-l-2 border-[#e5c158] pl-3">${section}</h2>`;
-                categoryData[section].forEach(item => {
-                    sectionDiv.innerHTML += `
-                        <div class="bg-[#1a110a]/50 p-4 rounded-xl border border-white/5 mb-3 flex justify-between items-center">
-                            <div>
-                                <h3 class="font-bold text-white">${item.nome}</h3>
-                                ${item.desc ? `<p class="text-xs text-[#d1c7bd] mt-1 italic">${item.desc}</p>` : ''}
-                            </div>
-                            <span class="font-bold text-[#e5c158] text-sm whitespace-nowrap ml-4">${item.preco}</span>
-                        </div>
-                    `;
+            try {
+                document.querySelectorAll('.category-btn').forEach(b => {
+                    b.className = "category-btn px-6 py-3 rounded-full text-xs font-black uppercase whitespace-nowrap bg-white/5 text-[#d1c7bd]";
                 });
-                container.appendChild(sectionDiv);
-            }
+                if (btn) {
+                    btn.className = "category-btn px-6 py-3 rounded-full text-xs font-black uppercase whitespace-nowrap bg-[#e5c158] text-[#150905]";
+                }
+                
+                const container = document.getElementById('menu-items');
+                if (!container) return;
+                container.innerHTML = '';
+                
+                const categoryData = database[cat];
+                if (!categoryData) return;
+
+                for (const section in categoryData) {
+                    const sectionDiv = document.createElement('div');
+                    sectionDiv.innerHTML = `<h2 class="text-[#e5c158] font-bold text-sm mb-4 uppercase tracking-widest border-l-2 border-[#e5c158] pl-3">${section}</h2>`;
+                    categoryData[section].forEach(item => {
+                        sectionDiv.innerHTML += `
+                            <div class="bg-[#1a110a]/50 p-4 rounded-xl border border-white/5 mb-3 flex justify-between items-center">
+                                <div>
+                                    <h3 class="font-bold text-white">${item.nome}</h3>
+                                    ${item.desc ? `<p class="text-xs text-[#d1c7bd] mt-1 italic">${item.desc}</p>` : ''}
+                                </div>
+                                <span class="font-bold text-[#e5c158] text-sm whitespace-nowrap ml-4">${item.preco}</span>
+                            </div>
+                        `;
+                    });
+                    container.appendChild(sectionDiv);
+                }
+            } catch(e) { console.error("Error switching category", e); }
         }
 
         window.onload = () => {
             showNotification("Bem-vindo ao Mesa Bar!");
-            switchCategory('comidas', document.querySelector('.category-btn'));
+            // Defensive load: verify elements exist before calling switch
+            const defaultBtn = document.querySelector('.category-btn');
+            if (defaultBtn) {
+                switchCategory('comidas', defaultBtn);
+            } else {
+                switchCategory('comidas', null);
+            }
         };
     </script>
 </body>
